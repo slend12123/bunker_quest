@@ -42,7 +42,11 @@ public class BunkerServlet extends HttpServlet {
         session.setAttribute("game", game);
 
         if (game.isAlive()) {
-            request.getRequestDispatcher("bunker.jsp").forward(request, response);
+            if (action.equals("outside")){
+                request.getRequestDispatcher("outside.jsp").forward(request, response);
+            } if (action.equals("bunker")){
+                request.getRequestDispatcher("bunker.jsp").forward(request,response);
+            }
         } else {
             request.getRequestDispatcher("result.jsp").forward(request, response);
         }

@@ -7,12 +7,14 @@ public class Game {
     private int food;
     private boolean alive;
     private String lastMessage;
+    private int days;
 
     public Game() {
         this.health = 100;
         this.food = 3;
         this.alive = true;
         this.lastMessage = "Ты проснулся в холодном бункере. Что будешь делать?";
+        this.days = 0;
     }
 
     public void makeChoice(String action) throws InterruptedException {
@@ -25,7 +27,7 @@ public class Game {
 
         switch (action) {
             case "eat":
-                if (food > 0) {
+                if (food > 0 && health < 100) {
                     food--;
                     health = Math.min(100, health + 10);
                     lastMessage = "Ты поел. Силы немного вернулись.";
@@ -50,9 +52,10 @@ public class Game {
 
             case "sleep":
                 if (health < 100) {
-                    Thread.sleep(5000);
+                    Thread.sleep(2000);
                     health += 5;
                     lastMessage = "Ты немного отдохнул.";
+                    days += 1;
                     break;
                 }
             default:
@@ -80,5 +83,9 @@ public class Game {
 
     public String getLastMessage() {
         return lastMessage;
+    }
+
+    public int getDays(){
+        return days;
     }
 }

@@ -2,6 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
+
+<link rel="stylesheet" href="css/bunker.css">
+
 <head>
     <title>Бункер</title>
 </head>
@@ -19,9 +22,9 @@
 
 <c:if test="${game.alive}">
     <form action="bunker" method="post">
-        <button name="action" value="eat">Поесть</button>
-        <button name="action" value="explore">Исследовать</button>
-        <button name="action" value="sleep">Поспать</button>
+        <button style="width: 150px; height: 50px;" name="action" value="eat">Поесть</button>
+        <button style="width: 150px; height: 50px;" name="action" value="outside">Выйти на улицу</button>
+        <button style="width: 150px; height: 50px;" name="action" value="sleep">Поспать</button>
     </form>
 </c:if>
 
